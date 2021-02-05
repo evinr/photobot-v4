@@ -2,9 +2,9 @@ import os
 import subprocess
 import time
 import keyboard
-import relay_open_close
-import display_image_fullscreen
-import save_latest_image
+from relay_open_close import *
+from display_image_fullscreen import * 
+from save_latest_image import * 
 
 
 # Global variable for preventing double button presses
