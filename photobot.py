@@ -2,9 +2,9 @@ import os
 import subprocess
 import time
 import keyboard
-import relay-open-close
-import display-image-fullscreen
-import save-latest-image
+import relay_open_close
+import display_image_fullscreen
+import save_latest_image
 
 
 # Global variable for preventing double button presses
@@ -17,7 +17,7 @@ def take_picture():
     open_relay()
 
     # captures the image and needs to be the absolute path
-    os.system("gphoto2 --capture-image-and-download --filename=~latest.jpeg --force-overwrite")
+    os.system("gphoto2 --capture-image-and-download --filename=./latest.jpeg --force-overwrite")
     
     # turn off the lights
     close_relay()
@@ -26,7 +26,7 @@ def take_picture():
     time.sleep(1)
 
     #  displays the image fullscreen
-    showPIL(Image.open("~/latest.jpeg"))
+    showPIL(Image.open("./latest.jpeg"))
     
     # copy over image for persistance 
     #copy the pictures with a timestamp

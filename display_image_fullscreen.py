@@ -31,4 +31,3 @@ def showPIL(pilImage):
     root.mainloop()
 
 
-showPIL(Image.open("last-image.jpg"))

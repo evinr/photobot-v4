@@ -10,10 +10,10 @@ Enable SSH -
 ```
     sudo apt-get install openssh-server
 ```
-    # I rebooted system after install
+Reboot system after install
 ```
     sudo systemctl enable ssh
-    ```
+```
 Update power management settings.
 If using a screen with a height of 600px, rotate the screen.
 Activate screen saver when idle
@@ -36,10 +36,10 @@ pip install keyboard pyserial
 ```
 sudo usermod -a -G dialout $USER
 ```
-Logout/login required.
+Logout/login required for these changes to be made.
 
 
-Install via a crontab at restart on ???root???? cause this is a low security use case.
+Install via a crontab at restart on root due to the way we are listing for keyboard presses
 ```
 sudo crontab -u root -e
 ```
