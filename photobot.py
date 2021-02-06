@@ -29,7 +29,7 @@ def take_picture():
     # showPIL(Image.open("/home/" + os.environ['MACHINE_NAME'] + "/latest.jpeg"))
     # PIL is too intense and prevents any interactions after displaying the image
     # going back to using an application to display the image and maintain interactions
-    os.system('eog /home/$MACHINE_NAME/latest.jpeg  --fullscreen')
+    subprocess.Popen(['eog', '/home/$MACHINE_NAME/latest.jpeg', '--fullscreen'])
 
     
     # copy over image for persistance 
@@ -52,7 +52,8 @@ def start(event):
     process_active = False
 
 # On launch set the kiosk image
-os.system('eog /home/$MACHINE_NAME/latest.jpeg  --fullscreen')
+# os.system('eog /home/$MACHINE_NAME/latest.jpeg  --fullscreen') # Needs x11 forwarding enabled to work
+subprocess.Popen(['eog', '/home/$MACHINE_NAME/latest.jpeg', '--fullscreen'])
 print('Photobot launched! Ready to photograph!')
 
 keyboard.on_press(start)
