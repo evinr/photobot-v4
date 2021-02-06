@@ -39,13 +39,16 @@ def take_picture():
 
 # have to pass event into the fuction that is called by the keyboard
 def start(event):
+    # TODO: create histerisis that limits presses to once every 15 seconds
     process_active = True
     # Gives the participants a chance to get into place
     time.sleep(3)
     take_picture()
     time.sleep(0.2)
     process_active = False
-    
+
+# On launch set the kiosk image
+showPIL(Image.open("/home/" + os.environ['MACHINE_NAME'] + "/latest.jpeg"))
 print('Photobot launched! Ready to photograph!')
 
 keyboard.on_press(start)

@@ -2,6 +2,7 @@ import glob
 import re
 import os
 import subprocess
+import time
    
  # read all files to find the last image/one with the highest number
 
@@ -15,7 +16,9 @@ def saveLastImage():
         print('the list is empty')
         # TODO: os.system is deprecated, you should use the subprocessmodule instead.
         command = command + "1.jpeg"
-        os.system(command)   
+        os.system(command)
+        # this command is not executing   
+        time.sleep(3)
         return None   
     lastFileName = allJpegs[0]
     parsedNumer = re.search(r'(?<=.)\d+', lastFileName)
