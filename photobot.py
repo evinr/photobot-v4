@@ -26,7 +26,7 @@ def take_picture():
     time.sleep(1)
 
     #  displays the image fullscreen
-    showPIL(Image.open("/home/$MACHINE_NAME/latest.jpeg"))
+    showPIL(Image.open("/home/" + os.environ['MACHINE_NAME'] + "/latest.jpeg"))
     
     # copy over image for persistance 
     #copy the pictures with a timestamp
