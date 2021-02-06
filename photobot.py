@@ -10,6 +10,15 @@ from save_latest_image import *
 # Global variable for preventing double button presses
 process_active = False
 
+def display_latest_image():
+    #  displays the image fullscreen
+    # showPIL(Image.open("/home/" + os.environ['MACHINE_NAME'] + "/latest.jpeg"))
+    # PIL is too intense and prevents any interactions after displaying the image
+    # going back to using an application to display the image and maintain interactions
+    # os.system('eog /home/$MACHINE_NAME/latest.jpeg  --fullscreen') # Needs x11 forwarding enabled to work
+    imagePath = "/home/" + os.environ['MACHINE_NAME'] + "/latest.jpeg"
+    subprocess.Popen(['eog', imagePath, '--fullscreen'])
+
 
 def take_picture():
     # need to block call stack
@@ -29,7 +38,7 @@ def take_picture():
     # showPIL(Image.open("/home/" + os.environ['MACHINE_NAME'] + "/latest.jpeg"))
     # PIL is too intense and prevents any interactions after displaying the image
     # going back to using an application to display the image and maintain interactions
-    subprocess.Popen(['eog', '/home/$MACHINE_NAME/latest.jpeg', '--fullscreen'])
+    display_latest_image()
 
     
     # copy over image for persistance 
@@ -52,8 +61,8 @@ def start(event):
     process_active = False
 
 # On launch set the kiosk image
-# os.system('eog /home/$MACHINE_NAME/latest.jpeg  --fullscreen') # Needs x11 forwarding enabled to work
-subprocess.Popen(['eog', '/home/$MACHINE_NAME/latest.jpeg', '--fullscreen'])
+
+display_latest_image()
 print('Photobot launched! Ready to photograph!')
 
 keyboard.on_press(start)
