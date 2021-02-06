@@ -21,7 +21,7 @@ Lock screen when screen saver is active.
 If screen was rotated before (due to a height of 600px), then rotate the screen back.
 Remember the password!
 ```
-sudo apt-get -y install python3-tk python3-pil python3-pil.imagetk gphoto2 curl python-xlib python3-pip
+sudo apt-get -y install gphoto2 curl python-xlib python3-pip eog python3-tk python3-pil python3-pil.imagetk
 ```
 ```
 curl https://bootstrap.pypa.io/get-pip.py -o get-pip.py

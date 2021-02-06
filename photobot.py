@@ -26,7 +26,11 @@ def take_picture():
     time.sleep(1)
 
     #  displays the image fullscreen
-    showPIL(Image.open("/home/" + os.environ['MACHINE_NAME'] + "/latest.jpeg"))
+    # showPIL(Image.open("/home/" + os.environ['MACHINE_NAME'] + "/latest.jpeg"))
+    # PIL is too intense and prevents any interactions after displaying the image
+    # going back to using an application to display the image and maintain interactions
+    os.system('eog /home/$MACHINE_NAME/latest.jpeg  --fullscreen')
+
     
     # copy over image for persistance 
     #copy the pictures with a timestamp
@@ -48,7 +52,7 @@ def start(event):
     process_active = False
 
 # On launch set the kiosk image
-showPIL(Image.open("/home/" + os.environ['MACHINE_NAME'] + "/latest.jpeg"))
+os.system('eog /home/$MACHINE_NAME/latest.jpeg  --fullscreen')
 print('Photobot launched! Ready to photograph!')
 
 keyboard.on_press(start)
