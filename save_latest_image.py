@@ -7,8 +7,8 @@ import subprocess
 
 def saveLastImage():
     #  TODO: Make this more extensible
-    allJpegs = glob.glob("Pictures/*.jpeg")
-    command = "cp ~/latest.jpeg ~/Pictures/"
+    allJpegs = glob.glob("/home/$MACHINE_NAME/Pictures/*.jpeg")
+    command = "cp /home/$MACHINE_NAME/latest.jpeg /home/$MACHINE_NAME/Pictures/"
     
     if len(allJpegs) == 0:
         # this assumes no other images are in the directory

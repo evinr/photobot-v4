@@ -33,6 +33,10 @@ python get-pip.py
 ```
 pip install keyboard pyserial
 ```
+Finally we need to set our environmental variables. Rather than doing it in the bash_config or bashrc we need them to be available to the root user as well since that is who will be running our script.
+export $MACHINE_NAME=your-user-name
+
+Alternatively, to create persistent variables that are truly system-wide, you should set them in /etc/environment
 ```
 sudo usermod -a -G dialout $USER
 ```
@@ -47,6 +51,7 @@ sudo crontab -u root -e
 Needs too be hard path as cron is running in some other scope. Also while we are at it schedule auto reboots.
 
 ```
-@reboot /home/atm-machine/photobot-v4/photobot.py 
+@reboot python3 /home/atm-machine/photobot-v4/photobot.py 
 0 4   *   *   *    /sbin/shutdown -r +5
 ```
+
