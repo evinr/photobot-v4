@@ -2,8 +2,11 @@ import os
 import subprocess
 import time
 import keyboard
-from relay_open_close import *
-from display_image_fullscreen import * 
+import datetime
+
+
+# from relay_open_close import *
+# from display_image_fullscreen import * 
 from save_latest_image import * 
 
 
@@ -51,19 +54,24 @@ def take_picture():
     time.sleep(1)
 
 
-process_active = True
 # have to pass event into the fuction that is called by the keyboard
 def start(event):
-    if process_active == False:
+    # since the events backup into a queue then we need to check if the timestamp is within 15 seconds
+    global last_picuture_date
+    time_difference = float(str(datetime.datetime.now().timestamp()-last_picuture_date))
+    if time_difference > 15:
         # Gives the participants a chance to get into place
         time.sleep(1)
-        take_picture()
+        # take_picture()
+        print('picture')
         time.sleep(0.2)
-        process_active = False
+        last_picuture_date = datetime.datetime.now().timestamp()
 
+# needed to prevent too many pictures from being taken when the keyboard is smashed
+last_picuture_date = datetime.datetime.now().timestamp() - 15
 # On launch set the kiosk image
-
 display_latest_image()
+# Notify we are ready to start
 print('Photobot launched! Ready to photograph!')
 
 keyboard.on_press(start)
