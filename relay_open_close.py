@@ -22,10 +22,9 @@ def close_relay():
     relay.write(codecs.decode(b'A00100A1','hex'))
     print('Relay Shut Off')
 
-# while True:
-    # turns the relay on and off every 5 seconds
-    # open_relay()
-    # time.sleep(5)
-    # close_relay()
-    # time.sleep(5)
+if __name__ == '__main__':
+    # turns the relay on for 5 seconds
+    open_relay()
+    time.sleep(5)
+    close_relay()
         

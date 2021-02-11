@@ -17,6 +17,7 @@ def display_latest_image():
     # going back to using an application to display the image and maintain interactions
     # os.system('eog /home/$MACHINE_NAME/latest.jpeg  --fullscreen') # Needs x11 forwarding enabled to work
     imagePath = "/home/" + os.environ['MACHINE_NAME'] + "/latest.jpeg"
+    print(imagePath)
     subprocess.Popen(['eog', imagePath, '--fullscreen'])
 
 
@@ -34,18 +35,17 @@ def take_picture():
     # takes time to copy image from camera to storage
     time.sleep(1)
 
-    #  displays the image fullscreen
-    # showPIL(Image.open("/home/" + os.environ['MACHINE_NAME'] + "/latest.jpeg"))
-    # PIL is too intense and prevents any interactions after displaying the image
-    # going back to using an application to display the image and maintain interactions
-    display_latest_image()
-
-    
     # copy over image for persistance 
     #copy the pictures with a timestamp
     # timestamps do not work without reliable internet or a battery powered RTC
     # better to use the file names to establish order as a way to ensure we are incrementing the photos into a cronological order
     saveLastImage()
+
+    #  displays the image fullscreen
+    # showPIL(Image.open("/home/" + os.environ['MACHINE_NAME'] + "/latest.jpeg"))
+    # PIL is too intense and prevents any interactions after displaying the image
+    # going back to using an application to display the image and maintain interactions
+    display_latest_image()
     
     # after running this, does it return cleanly and we can display without comparing hashes
     time.sleep(1)
