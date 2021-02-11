@@ -3,15 +3,11 @@ import subprocess
 import time
 import keyboard
 import datetime
-
-
-# from relay_open_close import *
+from relay_open_close import *
 # from display_image_fullscreen import * 
 from save_latest_image import * 
 
 
-# Global variable for preventing double button presses
-process_active = False
 
 def display_latest_image():
     #  displays the image fullscreen
@@ -49,9 +45,6 @@ def take_picture():
     # PIL is too intense and prevents any interactions after displaying the image
     # going back to using an application to display the image and maintain interactions
     display_latest_image()
-    
-    # after running this, does it return cleanly and we can display without comparing hashes
-    time.sleep(1)
 
 
 # have to pass event into the fuction that is called by the keyboard
@@ -62,9 +55,8 @@ def start(event):
     if time_difference > 15:
         # Gives the participants a chance to get into place
         time.sleep(1)
-        # take_picture()
-        print('picture')
-        time.sleep(0.2)
+        take_picture()
+        time.sleep(1)
         last_picuture_date = datetime.datetime.now().timestamp()
 
 # needed to prevent too many pictures from being taken when the keyboard is smashed
@@ -74,6 +66,7 @@ display_latest_image()
 # Notify we are ready to start
 print('Photobot launched! Ready to photograph!')
 
+# using any keyboard press to trigger
 keyboard.on_press(start)
 
 # Blocks until you press esc.
