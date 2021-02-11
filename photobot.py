@@ -16,9 +16,9 @@ def display_latest_image():
     # PIL is too intense and prevents any interactions after displaying the image
     # going back to using an application to display the image and maintain interactions
     # os.system('eog /home/$MACHINE_NAME/latest.jpeg  --fullscreen') # Needs x11 forwarding enabled to work
+    # eog was not displaying an image, so switched to feh which is lighter weight and more versitile
     imagePath = "/home/" + os.environ['MACHINE_NAME'] + "/latest.jpeg"
-    print(imagePath)
-    subprocess.Popen(['eog', imagePath, '--fullscreen'])
+    subprocess.Popen(['feh', imagePath, '-F'])
 
 
 def take_picture():
@@ -50,15 +50,16 @@ def take_picture():
     # after running this, does it return cleanly and we can display without comparing hashes
     time.sleep(1)
 
+
+process_active = True
 # have to pass event into the fuction that is called by the keyboard
 def start(event):
-    # TODO: create histerisis that limits presses to once every 15 seconds
-    process_active = True
-    # Gives the participants a chance to get into place
-    time.sleep(3)
-    take_picture()
-    time.sleep(0.2)
-    process_active = False
+    if process_active == False:
+        # Gives the participants a chance to get into place
+        time.sleep(1)
+        take_picture()
+        time.sleep(0.2)
+        process_active = False
 
 # On launch set the kiosk image
 
