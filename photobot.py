@@ -4,7 +4,7 @@ import time
 import keyboard
 import datetime
 from relay_open_close import *
-# from display_image_fullscreen import * 
+from display_image_fullscreen import * 
 from save_latest_image import * 
 
 
@@ -14,10 +14,12 @@ def display_latest_image():
     # showPIL(Image.open("/home/" + os.environ['MACHINE_NAME'] + "/latest.jpeg"))
     # PIL is too intense and prevents any interactions after displaying the image
     # going back to using an application to display the image and maintain interactions
-    # os.system('eog /home/$MACHINE_NAME/latest.jpeg  --fullscreen') # Needs x11 forwarding enabled to work
+    # os.system('eog /home/$MACHINE_NAME/latest.jpeg  --fullscreen') 
     # eog was not displaying an image, so switched to feh which is lighter weight and more versitile
-    imagePath = "/home/" + os.environ['MACHINE_NAME'] + "/latest.jpeg"
-    subprocess.Popen(['feh', imagePath, '-F'])
+    # imagePath = "/home/" + os.environ['MACHINE_NAME'] + "/latest.jpeg"
+    # subprocess.Popen(['feh', imagePath, '-F'])
+    # none of these will launch from the cron job and they do not seem to update the image when running manually
+    showLatestImage()
 
 
 def take_picture():
