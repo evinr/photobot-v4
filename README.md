@@ -55,3 +55,5 @@ Needs too be hard path as cron is running in some other scope. Also while we are
 0 4   *   *   *    /sbin/shutdown -r +5
 ```
 
+
+ENVIRONMENTAL VARIABLE ON ROOT IS MISSING!!!
