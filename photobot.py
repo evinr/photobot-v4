@@ -20,6 +20,7 @@ def display_latest_image():
     subprocess.Popen(['feh', imagePath, '-F'])
     # none of these will launch from the cron job and they do not seem to update the image when running manually
     # showLatestImage()
+    # cannot get root crontab to launch as expected, moved feh launching to launch at startup.
 
 
 def take_picture():
@@ -46,7 +47,8 @@ def take_picture():
     # showPIL(Image.open("/home/" + os.environ['MACHINE_NAME'] + "/latest.jpeg"))
     # PIL is too intense and prevents any interactions after displaying the image
     # going back to using an application to display the image and maintain interactions
-    display_latest_image()
+    # display_latest_image()
+
 
 
 # have to pass event into the fuction that is called by the keyboard
@@ -54,9 +56,9 @@ def start(event):
     # since the events backup into a queue then we need to check if the timestamp is within 15 seconds
     global last_picuture_date
     time_difference = float(str(datetime.datetime.now().timestamp()-last_picuture_date))
-    if time_difference > 15:
+    if time_difference > 5:
         # Gives the participants a chance to get into place
-        time.sleep(1)
+        time.sleep(2)
         take_picture()
         time.sleep(1)
         last_picuture_date = datetime.datetime.now().timestamp()
@@ -64,7 +66,7 @@ def start(event):
 # needed to prevent too many pictures from being taken when the keyboard is smashed
 last_picuture_date = datetime.datetime.now().timestamp() - 15
 # On launch set the kiosk image
-display_latest_image()
+# display_latest_image()
 # Notify we are ready to start
 print('Photobot launched! Ready to photograph!')
 

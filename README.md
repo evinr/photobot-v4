@@ -1,6 +1,5 @@
 # photobot-v4
 
-# deps
 https://ubuntu-mate.org/download/arm64/ 
 Setup to not need to login with checkbox.
 Enable SSH - 
@@ -57,3 +56,9 @@ Needs too be hard path as cron is running in some other scope. Also while we are
 
 
 ENVIRONMENTAL VARIABLE ON ROOT IS MISSING!!!
+DISPLAY=:0.0
+/etc/environment
+Add this command to the startup scripts application
+feh latest.jpeg -F -R 3 --hide-pointer 
+
+?? --auto-reload ??
