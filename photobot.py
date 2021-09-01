@@ -26,7 +26,7 @@ def display_latest_image():
 def take_picture():
 
     # Notify the user of the picture
-    imagePath = "/home/" + os.environ['MACHINE_NAME'] + "/smile.jpeg"
+    imagePath = "/home/" + os.environ['MACHINE_NAME'] + "/photobot-v4/smile.jpeg"
     subprocess.Popen(['feh', imagePath, '-F'])
     # need to block call stack
     # takes like 5 seconds to turn on the lights
@@ -55,7 +55,8 @@ def take_picture():
     
     #dispenses a card
     # TODO: make this better. Doesnt work with python3. At least auto detect devices. 
-    os.system("python2 vendapin.py /dev/ttyUSB1")
+    # hard coding the serial usb connections does not work since race conditions
+    # os.system("python2 vendapin.py /dev/ttyUSB1")
 
 
 
