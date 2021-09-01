@@ -9,14 +9,14 @@ Enable SSH -
 ```
     sudo apt-get install openssh-server
 ```
-Reboot system after install
+Reboot system after install 
 ```
     sudo systemctl enable ssh
 ```
 Update power management settings.
-If using a screen with a height of 600px, rotate the screen.
-Activate screen saver when idle
-Lock screen when screen saver is active.
+If using a screen with a height of 600px, the screen will need to be rotated to expose the button.
+Uncheck the Activate Screen Saver when Idle.
+Uncheck Lock Screen when Screen Saver is Active.
 If screen was rotated before (due to a height of 600px), then rotate the screen back.
 Remember the password!
 ```

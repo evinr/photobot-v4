@@ -24,6 +24,10 @@ def display_latest_image():
 
 
 def take_picture():
+
+    # Notify the user of the picture
+    imagePath = "/home/" + os.environ['MACHINE_NAME'] + "/smile.jpeg"
+    subprocess.Popen(['feh', imagePath, '-F'])
     # need to block call stack
     # takes like 5 seconds to turn on the lights
     open_relay()
@@ -47,7 +51,11 @@ def take_picture():
     # showPIL(Image.open("/home/" + os.environ['MACHINE_NAME'] + "/latest.jpeg"))
     # PIL is too intense and prevents any interactions after displaying the image
     # going back to using an application to display the image and maintain interactions
-    # display_latest_image()
+    display_latest_image()
+    
+    #dispenses a card
+    # TODO: make this better. Doesnt work with python3. At least auto detect devices. 
+    os.system("python2 vendapin.py /dev/ttyUSB1")
 
 
 
